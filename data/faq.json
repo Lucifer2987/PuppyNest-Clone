@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "slug": "are-your-puppies-vaccinated-and-health-checked",
+    "question": "Are your puppies vaccinated and health-checked?",
+    "answer": "Yes, absolutely! Every PuppyNest puppy undergoes multiple comprehensive veterinary examinations, receives age-appropriate international standard vaccinations, microchip implantation, and comprehensive parasite treatment. You receive an official Veterinary Health Certificate, vaccination booklet, and Dubai municipality registration upon adoption.",
+    "pinColor": "#9A4F28"
+  },
+  {
+    "id": 2,
+    "slug": "can-i-meet-a-puppy-before-i-decide",
+    "question": "Can I meet a puppy before I decide?",
+    "answer": "Of course! We warmly invite you to our Downtown Dubai showroom for a private cuddle session. Spending unhurried time bonding face-to-face helps you feel the puppy's unique temperament, size, and personality before making any commitment.",
+    "pinColor": "#3A6F9A"
+  },
+  {
+    "id": 3,
+    "slug": "can-i-take-my-puppy-home-the-same-day",
+    "question": "Can I take my puppy home the same day?",
+    "answer": "For puppies currently in our Dubai showroom, yes! If they have completed their scheduled veterinary clearance and starter transition period, you can take them home the same day. We provide a complete starter kit with essentials so your first night together is easy and cozy.",
+    "pinColor": "#D4952B"
+  },
+  {
+    "id": 4,
+    "slug": "do-you-import-puppies-from-abroad",
+    "question": "Do you import puppies from abroad?",
+    "answer": "Yes. If you are looking for a rare bloodline or specific miniature size, we partner directly with premier, strictly licensed ethical breeders in South Korea and worldwide. Each breeder is hand-selected and adheres to the strictest global animal welfare standards.",
+    "pinColor": "#3E6B5C"
+  },
+  {
+    "id": 5,
+    "slug": "how-does-an-imported-puppy-travel-to-dubai",
+    "question": "How does an imported puppy travel to Dubai?",
+    "answer": "Safety is our number one priority. Our imported puppies travel exclusively via VIP pet nannies in pressurized, temperature-controlled aircraft cabins—never in cargo holds. A dedicated caregiver monitors feeding, hydration, comfort, and cuddles throughout the flight until arrival at DXB.",
+    "pinColor": "#9A4F28"
+  },
+  {
+    "id": 6,
+    "slug": "will-i-see-photos-and-health-details-first",
+    "question": "Will I see photos and health details first?",
+    "answer": "Always. We provide unfiltered 4K videos, close-up photos, parentage background, weight charts, and comprehensive veterinarian screening reports before you confirm any reservation. We believe in 100% transparency.",
+    "pinColor": "#3A6F9A"
+  },
+  {
+    "id": 7,
+    "slug": "do-you-deliver",
+    "question": "Do you deliver?",
+    "answer": "Yes! We offer white-glove, climate-controlled door-to-door delivery throughout Dubai, Abu Dhabi, and across the UAE. We also coordinate safe international delivery to loving families worldwide with trusted global cargo partners.",
+    "pinColor": "#D4952B"
+  },
+  {
+    "id": 8,
+    "slug": "which-breeds-do-you-usually-have",
+    "question": "Which breeds do you usually have?",
+    "answer": "We specialize in miniature and teacup companions with hypoallergenic, low-shed coats: Maltipoos, Teacup Toy Poodles, Pomeranians, Cavapoos, French Bulldogs, and Shih Tzus. Each puppy has a sweet temperament ideal for apartment and family living.",
+    "pinColor": "#3E6B5C"
+  },
+  {
+    "id": 9,
+    "slug": "is-there-help-after-my-puppy-comes-home",
+    "question": "Is there help after my puppy comes home?",
+    "answer": "Always! Adoption is just the beginning of our relationship. Our dedicated puppy concierges and veterinary advisory network are available 24/7 on WhatsApp to guide you through potty training, nutrition, grooming, vaccine schedules, and settling in.",
+    "pinColor": "#9A4F28"
+  },
+  {
+    "id": 10,
+    "slug": "how-do-i-reserve-or-pay-for-a-puppy",
+    "question": "How do I reserve or pay for a puppy?",
+    "answer": "You can reserve your chosen puppy directly through WhatsApp with our team. We accept major credit cards, bank wire transfers, and in-person payments at our showroom. A holding deposit secures your puppy while we finalize travel or showroom handover.",
+    "pinColor": "#3A6F9A"
+  }
+]

@@ -1,0 +1,498 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-cream-bg: #FFF3D9;
+  --color-brand-dark: #2A1A12;
+  --color-brand-body: #5A4030;
+  --color-brand-primary: #9A4F28;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FFF3D9;
+  color: #5A4030;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-figtree), sans-serif;
+  overflow-x: hidden;
+  background-color: #FFF3D9;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: #F0B955;
+  color: #2A1A12;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF3D9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C98B4D;
+  border-radius: 9999px;
+  border: 2px solid #FFF3D9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9A4F28;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid #9A4F28;
+  outline-offset: 3px;
+}
+
+/* Custom Paw Cursor on Desktop with Fine Pointer */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor [contenteditable="true"] {
+    cursor: text !important;
+  }
+}
+
+/* 3D Perspective for Arched Doors */
+.door-perspective {
+  perspective: 1200px;
+}
+
+/* Mascot Walking & Idle Cycle Animations */
+@keyframes mascot-leg-swing-a {
+  0%, 100% {
+    transform: rotate(-14deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes mascot-leg-swing-b {
+  0%, 100% {
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(-14deg);
+  }
+}
+
+@keyframes mascot-body-bob {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+/* =========================================================================
+   TAIL WAG ANIMATIONS (All Mascot Poses) - Gentle, natural organic rhythms
+   ========================================================================= */
+
+/* 1. Idle Pose: Gentle, relaxed wag (-10deg to +10deg, 0.85s soft ease-in-out) */
+@keyframes tail-wag-idle {
+  0% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+/* 2. Walk Pose: Cheerful natural trot wag (-14deg to +14deg, 0.48s with soft pom-pom bounce) */
+@keyframes tail-wag-walk {
+  0% {
+    transform: rotate(-14deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0deg) translateY(-1.5px);
+  }
+  100% {
+    transform: rotate(14deg) translateY(0);
+  }
+}
+
+/* 2b. Run Pose: Trotting wag for floor run (-16deg to +16deg, 0.38s with -2px bounce) */
+@keyframes tail-wag-run {
+  0% {
+    transform: rotate(-16deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0deg) translateY(-2px);
+  }
+  100% {
+    transform: rotate(16deg) translateY(0);
+  }
+}
+
+/* 3. Sit Pose: Slow, contented wag (+/-8deg, 0.95s soft ease-in-out) */
+@keyframes tail-wag-sit {
+  0% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(8deg);
+  }
+}
+
+/* 4. Excited Wag: Happy moments, doors opening, taps (+/-22deg, 0.28s joyful tempo) */
+@keyframes tail-wag-excited {
+  0% {
+    transform: rotate(-22deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0deg) translateY(-2px);
+  }
+  100% {
+    transform: rotate(22deg) translateY(0);
+  }
+}
+
+.mascot-tail {
+  transform-box: fill-box;
+  transform-origin: 20% 90%;
+  animation-play-state: running;
+  transition: transform 0.2s ease-out;
+}
+
+.mascot-tail-idle {
+  animation: tail-wag-idle 0.85s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+.mascot-tail-walk {
+  animation: tail-wag-walk 0.48s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+.mascot-tail-run {
+  animation: tail-wag-run 0.38s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+.mascot-tail-sit {
+  animation: tail-wag-sit 0.95s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+.mascot-tail-excited {
+  animation: tail-wag-excited 0.28s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+/* Respect prefers-reduced-motion: turn wag off (static tail) */
+@media (prefers-reduced-motion: reduce) {
+  .mascot-tail,
+  .mascot-tail-idle,
+  .mascot-tail-walk,
+  .mascot-tail-run,
+  .mascot-tail-sit,
+  .mascot-tail-excited {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+@keyframes mascot-tail-wag {
+  0%, 100% {
+    transform: rotate(-14deg);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
+}
+
+@keyframes mascot-ear-bounce {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes mascot-topknot-bounce {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(4deg);
+  }
+}
+
+@keyframes mascot-blink {
+  0%, 94%, 98%, 100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes mascot-breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes zzz-float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(18px, -36px) scale(1.2);
+  }
+}
+
+.mascot-walking .leg-swing-a {
+  animation: mascot-leg-swing-a 0.48s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.mascot-walking .leg-swing-b {
+  animation: mascot-leg-swing-b 0.48s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.mascot-walking .body-bob {
+  animation: mascot-body-bob 0.24s ease-in-out infinite;
+}
+
+.mascot-walking .tail-wag {
+  animation: mascot-tail-wag 0.48s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.mascot-walking .ear-bounce {
+  animation: mascot-ear-bounce 0.48s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.mascot-walking .topknot-bounce {
+  animation: mascot-topknot-bounce 0.48s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Natural Trotting Cycle for PupsRun (relaxed from hyper-fast 0.22s/0.11s) */
+.mascot-running .leg-swing-a {
+  animation: mascot-leg-swing-a 0.36s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.mascot-running .leg-swing-b {
+  animation: mascot-leg-swing-b 0.36s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.mascot-running .body-bob {
+  animation: mascot-body-bob 0.18s ease-in-out infinite;
+}
+
+.mascot-running .tail-wag {
+  animation: mascot-tail-wag 0.36s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.mascot-running .ear-bounce {
+  animation: mascot-ear-bounce 0.36s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.mascot-running .topknot-bounce {
+  animation: mascot-topknot-bounce 0.36s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes dust-cloud-fade {
+  0% {
+    opacity: 0.7;
+    transform: translate(0, 0) scale(0.6);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-18px, -8px) scale(1.3);
+  }
+}
+
+.dust-puff {
+  animation: dust-cloud-fade 0.55s ease-out forwards;
+}
+
+@keyframes sparkle-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3) translateY(-14px) rotate(30deg);
+  }
+}
+
+.sparkle-burst {
+  animation: sparkle-pop 0.65s ease-out forwards;
+}
+
+@keyframes dash-crawl {
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+.animate-dash-crawl {
+  animation: dash-crawl 12s linear infinite;
+}
+
+.mascot-idle .mascot-eyes {
+  animation: mascot-blink 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.mascot-idle .breathe-idle {
+  animation: mascot-breathe 3.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.mascot-sleeping .breathe {
+  animation: mascot-breathe 2.8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.zzz-1 {
+  animation: zzz-float 2.4s ease-out infinite;
+}
+
+.zzz-2 {
+  animation: zzz-float 2.4s ease-out 0.8s infinite;
+}
+
+.zzz-3 {
+  animation: zzz-float 2.4s ease-out 1.6s infinite;
+}
+
+.door-leaf {
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.door-card:hover .door-leaf,
+.door-card.is-open .door-leaf {
+  transform: rotateY(-82deg);
+}
+
+@keyframes speech-tag-wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-1.5deg);
+  }
+  75% {
+    transform: rotate(1.5deg);
+  }
+}
+
+.speech-tag-wiggle {
+  animation: speech-tag-wiggle 3.2s ease-in-out infinite;
+}
+
+@keyframes hero-frame-bob {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.hero-frame-bob-1 {
+  animation: hero-frame-bob 3.4s ease-in-out infinite;
+}
+
+.hero-frame-bob-2 {
+  animation: hero-frame-bob 3.8s ease-in-out 0.6s infinite;
+}
+
+.hero-frame-bob-3 {
+  animation: hero-frame-bob 3.2s ease-in-out 1.2s infinite;
+}
+
+.hero-frame-bob-4 {
+  animation: hero-frame-bob 3.6s ease-in-out 0.4s infinite;
+}
+
+.hero-frame-bob-5 {
+  animation: hero-frame-bob 4.0s ease-in-out 0.9s infinite;
+}
+
+.hero-frame-bob-6 {
+  animation: hero-frame-bob 3.5s ease-in-out 1.5s infinite;
+}
+
+/* Subtle speech tag bubble pointer */
+.speech-bubble-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #2A1A12;
+}
+
+.speech-bubble-bottom::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #FFF9EE;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

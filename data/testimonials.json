@@ -1,0 +1,74 @@
+[
+  {
+    "id": "tf-1",
+    "puppyName": "Max",
+    "breed": "Korean Maltipoo",
+    "family": "The Al Mansoori Family",
+    "location": "Palm Jumeirah, Dubai",
+    "quote": "PuppyNest made bringing Max home so effortless and comforting. From the veterinary certificates to his safe arrival in Dubai, every detail felt world-class. He has brought infinite warmth into our family.",
+    "photoUrl": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=800&q=80",
+    "caption": "Max first day in his Palm villa! 🌴🐾",
+    "emoji": "✨",
+    "year": "2026"
+  },
+  {
+    "id": "tf-2",
+    "puppyName": "Chloe",
+    "breed": "Teacup Pomeranian",
+    "family": "Elena & Tariq",
+    "location": "Downtown Dubai",
+    "quote": "We visited the Downtown showroom and immediately fell in love. Seeing how clean, ethical, and calm the environment was gave us complete peace of mind.",
+    "photoUrl": "https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&fit=crop&w=800&q=80",
+    "caption": "Chloe admiring the Burj Khalifa view 🏙️💖",
+    "emoji": "🧸",
+    "year": "2026"
+  },
+  {
+    "id": "tf-3",
+    "puppyName": "Coco",
+    "breed": "Micro Poodle",
+    "family": "Dr. Sophia K.",
+    "location": "Dubai Hills Estate",
+    "quote": "Her micro size and hypoallergenic coat are truly exceptional. The 24/7 post-adoption care team checked in on Coco's feeding and adjustment every single week.",
+    "photoUrl": "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=800&q=80",
+    "caption": "Coco snug in her luxury carrier 🚗💕",
+    "emoji": "🌸",
+    "year": "2026"
+  },
+  {
+    "id": "tf-4",
+    "puppyName": "Bella",
+    "breed": "Cavapoo",
+    "family": "The Sterling Family",
+    "location": "Arabian Ranches III",
+    "quote": "Our two daughters cried happy tears when Bella stepped out. She is so gentle with the children and arrived with full international passport and health records.",
+    "photoUrl": "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=800&q=80",
+    "caption": "Bella's first garden stroll 🌼🐶",
+    "emoji": "☀️",
+    "year": "2025"
+  },
+  {
+    "id": "tf-5",
+    "puppyName": "Mimi",
+    "breed": "Maltipoo",
+    "family": "Nouf & Rashid",
+    "location": "Abu Dhabi",
+    "quote": "The door-to-door temperature-controlled delivery to Abu Dhabi was seamless. Mimi arrived happy, hydrated, and ready for cuddles. Unmatched service in the GCC.",
+    "photoUrl": "https://images.unsplash.com/photo-1591160690555-5debfba289f0?auto=format&fit=crop&w=800&q=80",
+    "caption": "Mimi enjoying weekend cuddles 🛋️🤍",
+    "emoji": "💫",
+    "year": "2026"
+  },
+  {
+    "id": "tf-6",
+    "puppyName": "Oliver",
+    "breed": "Snow Pomeranian",
+    "family": "Mark & Clara",
+    "location": "Jumeirah Beach Residence",
+    "quote": "Real photos, real videos, no surprises. When Oliver arrived, he was even cuter than his videos! Thank you PuppyNest team for guiding us patiently.",
+    "photoUrl": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=800&q=80",
+    "caption": "Oliver fluffy as a fresh marshmallow ☁️",
+    "emoji": "🐾",
+    "year": "2025"
+  }
+]

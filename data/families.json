@@ -1,0 +1,642 @@
+[
+  {
+    "id": "fam-001",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Coco enjoying morning cuddles in Downtown 💕",
+    "alt": "Sarah & Omar with their Teacup Maltipoo in Downtown Dubai",
+    "owner": "Sarah & Omar",
+    "location": "Downtown Dubai",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-02-15"
+  },
+  {
+    "id": "fam-002",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "First beach day at Palm Jumeirah! 🌊🐾",
+    "alt": "Elena K. with their Korean Maltipoo in Palm Jumeirah",
+    "owner": "Elena K.",
+    "location": "Palm Jumeirah",
+    "breed": "Korean Maltipoo",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "fam-003",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Mimi settled into her luxury penthouse 👑",
+    "alt": "The Al Mansoori Family with their Teacup Poodle in Dubai Marina",
+    "owner": "The Al Mansoori Family",
+    "location": "Dubai Marina",
+    "breed": "Teacup Poodle",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "fam-004",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Leo found his best friend forever 🧸",
+    "alt": "Chloe & Liam with their Pomeranian in Emirates Hills",
+    "owner": "Chloe & Liam",
+    "location": "Emirates Hills",
+    "breed": "Pomeranian",
+    "date": "2026-05-15"
+  },
+  {
+    "id": "fam-005",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Look at that sleepy puppy smile! ✨",
+    "alt": "Noura Al Zaabi with their Cavapoo in Jumeirah Golf Estates",
+    "owner": "Noura Al Zaabi",
+    "location": "Jumeirah Golf Estates",
+    "breed": "Cavapoo",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "fam-006",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Spoiled rotten already with cozy cushions 🛋️",
+    "alt": "Marcus & Anya with their Imperial Shih Tzu in City Walk",
+    "owner": "Marcus & Anya",
+    "location": "City Walk",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-07-15"
+  },
+  {
+    "id": "fam-007",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Morning walks in Dubai Marina 🏙️🐶",
+    "alt": "David T. with their Teacup Maltipoo in Bluewaters Island",
+    "owner": "David T.",
+    "location": "Bluewaters Island",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-08-15"
+  },
+  {
+    "id": "fam-008",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Meet Bella, the sweetest Maltipoo baby 🎀",
+    "alt": "Fatima & Rashid with their Korean Maltipoo in Al Barari",
+    "owner": "Fatima & Rashid",
+    "location": "Al Barari",
+    "breed": "Korean Maltipoo",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "fam-009",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Our heart is so full! Thank you PuppyNest 💖",
+    "alt": "Jessica M. with their Teacup Poodle in Meydan",
+    "owner": "Jessica M.",
+    "location": "Meydan",
+    "breed": "Teacup Poodle",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "fam-010",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Pure unconditional joy every single day ☀️",
+    "alt": "The Al Qasimi Family with their Pomeranian in Arabian Ranches",
+    "owner": "The Al Qasimi Family",
+    "location": "Arabian Ranches",
+    "breed": "Pomeranian",
+    "date": "2026-02-15"
+  },
+  {
+    "id": "fam-011",
+    "image": "/images/families/placeholder.svg",
+    "caption": "The happiest homecoming surprise ever 🎁",
+    "alt": "Alexander B. with their Cavapoo in DIFC",
+    "owner": "Alexander B.",
+    "location": "DIFC",
+    "breed": "Cavapoo",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "fam-012",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Milo loves his plush teddy bear 🧸",
+    "alt": "Maya & Zaid with their Imperial Shih Tzu in Umm Suqeim",
+    "owner": "Maya & Zaid",
+    "location": "Umm Suqeim",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "fam-013",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Tail wagging all afternoon at the park 🌳",
+    "alt": "Sophie D. with their Teacup Maltipoo in Downtown Dubai",
+    "owner": "Sophie D.",
+    "location": "Downtown Dubai",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-05-15"
+  },
+  {
+    "id": "fam-014",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Family road trip with our precious baby 🚗",
+    "alt": "Hamdan & Mariam with their Korean Maltipoo in Palm Jumeirah",
+    "owner": "Hamdan & Mariam",
+    "location": "Palm Jumeirah",
+    "breed": "Korean Maltipoo",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "fam-015",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Living like royalty in Emirates Hills 🏰",
+    "alt": "Tariq A. with their Teacup Poodle in Dubai Marina",
+    "owner": "Tariq A.",
+    "location": "Dubai Marina",
+    "breed": "Teacup Poodle",
+    "date": "2026-07-15"
+  },
+  {
+    "id": "fam-016",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Teacup paws, enormous personality! 🐾",
+    "alt": "Lina & Karim with their Pomeranian in Emirates Hills",
+    "owner": "Lina & Karim",
+    "location": "Emirates Hills",
+    "breed": "Pomeranian",
+    "date": "2026-08-15"
+  },
+  {
+    "id": "fam-017",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Best adoption decision of our lives 🤍",
+    "alt": "Sarah & Omar with their Cavapoo in Jumeirah Golf Estates",
+    "owner": "Sarah & Omar",
+    "location": "Jumeirah Golf Estates",
+    "breed": "Cavapoo",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "fam-018",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Nap time after exploring the showroom 💤",
+    "alt": "Elena K. with their Imperial Shih Tzu in City Walk",
+    "owner": "Elena K.",
+    "location": "City Walk",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "fam-019",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Archie is the king of this household 👑",
+    "alt": "The Al Mansoori Family with their Teacup Maltipoo in Bluewaters Island",
+    "owner": "The Al Mansoori Family",
+    "location": "Bluewaters Island",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-02-15"
+  },
+  {
+    "id": "fam-020",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Cuddle sessions never end with this little one 🥰",
+    "alt": "Chloe & Liam with their Korean Maltipoo in Al Barari",
+    "owner": "Chloe & Liam",
+    "location": "Al Barari",
+    "breed": "Korean Maltipoo",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "fam-021",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Coco enjoying morning cuddles in Downtown 💕",
+    "alt": "Noura Al Zaabi with their Teacup Poodle in Meydan",
+    "owner": "Noura Al Zaabi",
+    "location": "Meydan",
+    "breed": "Teacup Poodle",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "fam-022",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "First beach day at Palm Jumeirah! 🌊🐾",
+    "alt": "Marcus & Anya with their Pomeranian in Arabian Ranches",
+    "owner": "Marcus & Anya",
+    "location": "Arabian Ranches",
+    "breed": "Pomeranian",
+    "date": "2026-05-15"
+  },
+  {
+    "id": "fam-023",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Mimi settled into her luxury penthouse 👑",
+    "alt": "David T. with their Cavapoo in DIFC",
+    "owner": "David T.",
+    "location": "DIFC",
+    "breed": "Cavapoo",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "fam-024",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Leo found his best friend forever 🧸",
+    "alt": "Fatima & Rashid with their Imperial Shih Tzu in Umm Suqeim",
+    "owner": "Fatima & Rashid",
+    "location": "Umm Suqeim",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-07-15"
+  },
+  {
+    "id": "fam-025",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Look at that sleepy puppy smile! ✨",
+    "alt": "Jessica M. with their Teacup Maltipoo in Downtown Dubai",
+    "owner": "Jessica M.",
+    "location": "Downtown Dubai",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-08-15"
+  },
+  {
+    "id": "fam-026",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Spoiled rotten already with cozy cushions 🛋️",
+    "alt": "The Al Qasimi Family with their Korean Maltipoo in Palm Jumeirah",
+    "owner": "The Al Qasimi Family",
+    "location": "Palm Jumeirah",
+    "breed": "Korean Maltipoo",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "fam-027",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Morning walks in Dubai Marina 🏙️🐶",
+    "alt": "Alexander B. with their Teacup Poodle in Dubai Marina",
+    "owner": "Alexander B.",
+    "location": "Dubai Marina",
+    "breed": "Teacup Poodle",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "fam-028",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Meet Bella, the sweetest Maltipoo baby 🎀",
+    "alt": "Maya & Zaid with their Pomeranian in Emirates Hills",
+    "owner": "Maya & Zaid",
+    "location": "Emirates Hills",
+    "breed": "Pomeranian",
+    "date": "2026-02-15"
+  },
+  {
+    "id": "fam-029",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Our heart is so full! Thank you PuppyNest 💖",
+    "alt": "Sophie D. with their Cavapoo in Jumeirah Golf Estates",
+    "owner": "Sophie D.",
+    "location": "Jumeirah Golf Estates",
+    "breed": "Cavapoo",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "fam-030",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Pure unconditional joy every single day ☀️",
+    "alt": "Hamdan & Mariam with their Imperial Shih Tzu in City Walk",
+    "owner": "Hamdan & Mariam",
+    "location": "City Walk",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "fam-031",
+    "image": "/images/families/placeholder.svg",
+    "caption": "The happiest homecoming surprise ever 🎁",
+    "alt": "Tariq A. with their Teacup Maltipoo in Bluewaters Island",
+    "owner": "Tariq A.",
+    "location": "Bluewaters Island",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-05-15"
+  },
+  {
+    "id": "fam-032",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Milo loves his plush teddy bear 🧸",
+    "alt": "Lina & Karim with their Korean Maltipoo in Al Barari",
+    "owner": "Lina & Karim",
+    "location": "Al Barari",
+    "breed": "Korean Maltipoo",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "fam-033",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Tail wagging all afternoon at the park 🌳",
+    "alt": "Sarah & Omar with their Teacup Poodle in Meydan",
+    "owner": "Sarah & Omar",
+    "location": "Meydan",
+    "breed": "Teacup Poodle",
+    "date": "2026-07-15"
+  },
+  {
+    "id": "fam-034",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Family road trip with our precious baby 🚗",
+    "alt": "Elena K. with their Pomeranian in Arabian Ranches",
+    "owner": "Elena K.",
+    "location": "Arabian Ranches",
+    "breed": "Pomeranian",
+    "date": "2026-08-15"
+  },
+  {
+    "id": "fam-035",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Living like royalty in Emirates Hills 🏰",
+    "alt": "The Al Mansoori Family with their Cavapoo in DIFC",
+    "owner": "The Al Mansoori Family",
+    "location": "DIFC",
+    "breed": "Cavapoo",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "fam-036",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Teacup paws, enormous personality! 🐾",
+    "alt": "Chloe & Liam with their Imperial Shih Tzu in Umm Suqeim",
+    "owner": "Chloe & Liam",
+    "location": "Umm Suqeim",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "fam-037",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Best adoption decision of our lives 🤍",
+    "alt": "Noura Al Zaabi with their Teacup Maltipoo in Downtown Dubai",
+    "owner": "Noura Al Zaabi",
+    "location": "Downtown Dubai",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-02-15"
+  },
+  {
+    "id": "fam-038",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Nap time after exploring the showroom 💤",
+    "alt": "Marcus & Anya with their Korean Maltipoo in Palm Jumeirah",
+    "owner": "Marcus & Anya",
+    "location": "Palm Jumeirah",
+    "breed": "Korean Maltipoo",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "fam-039",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Archie is the king of this household 👑",
+    "alt": "David T. with their Teacup Poodle in Dubai Marina",
+    "owner": "David T.",
+    "location": "Dubai Marina",
+    "breed": "Teacup Poodle",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "fam-040",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Cuddle sessions never end with this little one 🥰",
+    "alt": "Fatima & Rashid with their Pomeranian in Emirates Hills",
+    "owner": "Fatima & Rashid",
+    "location": "Emirates Hills",
+    "breed": "Pomeranian",
+    "date": "2026-05-15"
+  },
+  {
+    "id": "fam-041",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Coco enjoying morning cuddles in Downtown 💕",
+    "alt": "Jessica M. with their Cavapoo in Jumeirah Golf Estates",
+    "owner": "Jessica M.",
+    "location": "Jumeirah Golf Estates",
+    "breed": "Cavapoo",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "fam-042",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "First beach day at Palm Jumeirah! 🌊🐾",
+    "alt": "The Al Qasimi Family with their Imperial Shih Tzu in City Walk",
+    "owner": "The Al Qasimi Family",
+    "location": "City Walk",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-07-15"
+  },
+  {
+    "id": "fam-043",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Mimi settled into her luxury penthouse 👑",
+    "alt": "Alexander B. with their Teacup Maltipoo in Bluewaters Island",
+    "owner": "Alexander B.",
+    "location": "Bluewaters Island",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-08-15"
+  },
+  {
+    "id": "fam-044",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Leo found his best friend forever 🧸",
+    "alt": "Maya & Zaid with their Korean Maltipoo in Al Barari",
+    "owner": "Maya & Zaid",
+    "location": "Al Barari",
+    "breed": "Korean Maltipoo",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "fam-045",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Look at that sleepy puppy smile! ✨",
+    "alt": "Sophie D. with their Teacup Poodle in Meydan",
+    "owner": "Sophie D.",
+    "location": "Meydan",
+    "breed": "Teacup Poodle",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "fam-046",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Spoiled rotten already with cozy cushions 🛋️",
+    "alt": "Hamdan & Mariam with their Pomeranian in Arabian Ranches",
+    "owner": "Hamdan & Mariam",
+    "location": "Arabian Ranches",
+    "breed": "Pomeranian",
+    "date": "2026-02-15"
+  },
+  {
+    "id": "fam-047",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Morning walks in Dubai Marina 🏙️🐶",
+    "alt": "Tariq A. with their Cavapoo in DIFC",
+    "owner": "Tariq A.",
+    "location": "DIFC",
+    "breed": "Cavapoo",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "fam-048",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Meet Bella, the sweetest Maltipoo baby 🎀",
+    "alt": "Lina & Karim with their Imperial Shih Tzu in Umm Suqeim",
+    "owner": "Lina & Karim",
+    "location": "Umm Suqeim",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "fam-049",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Our heart is so full! Thank you PuppyNest 💖",
+    "alt": "Sarah & Omar with their Teacup Maltipoo in Downtown Dubai",
+    "owner": "Sarah & Omar",
+    "location": "Downtown Dubai",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-05-15"
+  },
+  {
+    "id": "fam-050",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Pure unconditional joy every single day ☀️",
+    "alt": "Elena K. with their Korean Maltipoo in Palm Jumeirah",
+    "owner": "Elena K.",
+    "location": "Palm Jumeirah",
+    "breed": "Korean Maltipoo",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "fam-051",
+    "image": "/images/families/placeholder.svg",
+    "caption": "The happiest homecoming surprise ever 🎁",
+    "alt": "The Al Mansoori Family with their Teacup Poodle in Dubai Marina",
+    "owner": "The Al Mansoori Family",
+    "location": "Dubai Marina",
+    "breed": "Teacup Poodle",
+    "date": "2026-07-15"
+  },
+  {
+    "id": "fam-052",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Milo loves his plush teddy bear 🧸",
+    "alt": "Chloe & Liam with their Pomeranian in Emirates Hills",
+    "owner": "Chloe & Liam",
+    "location": "Emirates Hills",
+    "breed": "Pomeranian",
+    "date": "2026-08-15"
+  },
+  {
+    "id": "fam-053",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Tail wagging all afternoon at the park 🌳",
+    "alt": "Noura Al Zaabi with their Cavapoo in Jumeirah Golf Estates",
+    "owner": "Noura Al Zaabi",
+    "location": "Jumeirah Golf Estates",
+    "breed": "Cavapoo",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "fam-054",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Family road trip with our precious baby 🚗",
+    "alt": "Marcus & Anya with their Imperial Shih Tzu in City Walk",
+    "owner": "Marcus & Anya",
+    "location": "City Walk",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "fam-055",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Living like royalty in Emirates Hills 🏰",
+    "alt": "David T. with their Teacup Maltipoo in Bluewaters Island",
+    "owner": "David T.",
+    "location": "Bluewaters Island",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-02-15"
+  },
+  {
+    "id": "fam-056",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Teacup paws, enormous personality! 🐾",
+    "alt": "Fatima & Rashid with their Korean Maltipoo in Al Barari",
+    "owner": "Fatima & Rashid",
+    "location": "Al Barari",
+    "breed": "Korean Maltipoo",
+    "date": "2026-03-15"
+  },
+  {
+    "id": "fam-057",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Best adoption decision of our lives 🤍",
+    "alt": "Jessica M. with their Teacup Poodle in Meydan",
+    "owner": "Jessica M.",
+    "location": "Meydan",
+    "breed": "Teacup Poodle",
+    "date": "2026-04-15"
+  },
+  {
+    "id": "fam-058",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Nap time after exploring the showroom 💤",
+    "alt": "The Al Qasimi Family with their Pomeranian in Arabian Ranches",
+    "owner": "The Al Qasimi Family",
+    "location": "Arabian Ranches",
+    "breed": "Pomeranian",
+    "date": "2026-05-15"
+  },
+  {
+    "id": "fam-059",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Archie is the king of this household 👑",
+    "alt": "Alexander B. with their Cavapoo in DIFC",
+    "owner": "Alexander B.",
+    "location": "DIFC",
+    "breed": "Cavapoo",
+    "date": "2026-06-15"
+  },
+  {
+    "id": "fam-060",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Cuddle sessions never end with this little one 🥰",
+    "alt": "Maya & Zaid with their Imperial Shih Tzu in Umm Suqeim",
+    "owner": "Maya & Zaid",
+    "location": "Umm Suqeim",
+    "breed": "Imperial Shih Tzu",
+    "date": "2026-07-15"
+  },
+  {
+    "id": "fam-061",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Coco enjoying morning cuddles in Downtown 💕",
+    "alt": "Sophie D. with their Teacup Maltipoo in Downtown Dubai",
+    "owner": "Sophie D.",
+    "location": "Downtown Dubai",
+    "breed": "Teacup Maltipoo",
+    "date": "2026-08-15"
+  },
+  {
+    "id": "fam-062",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "First beach day at Palm Jumeirah! 🌊🐾",
+    "alt": "Hamdan & Mariam with their Korean Maltipoo in Palm Jumeirah",
+    "owner": "Hamdan & Mariam",
+    "location": "Palm Jumeirah",
+    "breed": "Korean Maltipoo",
+    "date": "2026-09-15"
+  },
+  {
+    "id": "fam-063",
+    "image": "/images/families/placeholder.svg",
+    "caption": "Mimi settled into her luxury penthouse 👑",
+    "alt": "Tariq A. with their Teacup Poodle in Dubai Marina",
+    "owner": "Tariq A.",
+    "location": "Dubai Marina",
+    "breed": "Teacup Poodle",
+    "date": "2026-01-15"
+  },
+  {
+    "id": "fam-064",
+    "image": "/images/families/placeholder-tan.svg",
+    "caption": "Leo found his best friend forever 🧸",
+    "alt": "Lina & Karim with their Pomeranian in Emirates Hills",
+    "owner": "Lina & Karim",
+    "location": "Emirates Hills",
+    "breed": "Pomeranian",
+    "date": "2026-02-15"
+  }
+]
