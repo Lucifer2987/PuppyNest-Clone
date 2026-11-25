@@ -70,9 +70,6 @@ export const metadata: Metadata = {
     title: "PuppyNest | Premium Teacup Puppies in Dubai",
     description: siteConfig.description,
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
 };
 
 export const viewport: Viewport = {

@@ -9,15 +9,20 @@ interface LogoProps {
 }
 
 export function LogoBadge({ className, size = "md" }: { className?: string; size?: "sm" | "md" | "lg" }) {
-  const dim = size === "sm" ? 36 : size === "md" ? 48 : 56;
+  const sizeClass =
+    size === "sm"
+      ? "w-9 h-9"
+      : size === "md"
+      ? "w-[42px] h-[42px] md:w-[52px] md:h-[52px]"
+      : "w-[56px] h-[56px]";
 
   return (
     <div
       className={cn(
         "relative flex items-center justify-center rounded-full bg-[#FFF8EA] border-[4px] border-[#9A4F28] shadow-sm select-none shrink-0 transition-transform hover:rotate-3",
+        sizeClass,
         className
       )}
-      style={{ width: dim, height: dim }}
       aria-label="PuppyNest Badge"
     >
       <svg
@@ -104,7 +109,7 @@ export function Logo({ className, size = "md", showWordmark = true }: LogoProps)
     >
       <LogoBadge size={size} />
       {showWordmark && (
-        <span className="font-display font-black text-[26px] tracking-[-0.01em] text-[#2A1A12] leading-none transition-colors group-hover:text-[#9A4F28]">
+        <span className="font-display font-black text-[21px] md:text-[25px] tracking-[-0.01em] text-[#2A1A12] leading-none transition-colors group-hover:text-[#9A4F28]">
           PuppyNest
         </span>
       )}

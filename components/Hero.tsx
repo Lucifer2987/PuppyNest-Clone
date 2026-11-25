@@ -172,7 +172,7 @@ export function Hero() {
       {/* ============================================================
           TOP / MIDDLE CONTENT: Tagline, Headline, Subtitle, Buttons
           ============================================================ */}
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center z-10 pt-4 sm:pt-7 md:pt-9">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center z-10 pt-[26px] md:pt-[30px]">
         {/* Tagline: Patrick Hand 28px, #9A4F28, ~48px below header */}
         <div className="inline-flex flex-col items-center select-none">
           <span className="font-handwriting text-[28px] text-[#9A4F28] font-bold tracking-wide">
