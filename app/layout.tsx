@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { StickyContactBar } from "@/components/StickyContactBar";
 import { PawCursor } from "@/components/PawCursor";
 import { FollowMascot } from "@/components/FollowMascot";
+import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -114,6 +115,9 @@ export default function RootLayout({
 
         {/* Global Follow-the-Scroll Storytelling Mascot */}
         <FollowMascot />
+
+        {/* Route-change Loading Curtain */}
+        <PageTransitionLoader />
       </body>
     </html>
   );
