@@ -11,6 +11,9 @@ import {
   subscribeExcitedMascot,
   subscribeMascotOwner,
   getMascotOwner,
+  claimMascotOwnership,
+  releaseMascotOwnership,
+  setGlobalFooterSleeping,
   getGlobalHeroProgress,
   MascotOwner,
 } from "@/hooks/useMascotPosition";
@@ -53,6 +56,21 @@ const HERO_ARC_HEIGHT_MOBILE = 60; // px
 const HERO_JUMP_ROTATION_DEG = 6; // deg tilt during jump (-6 to +6)
 const HERO_MASCOT_BASE_SIZE_DESKTOP = 170;
 const HERO_MASCOT_BASE_SIZE_MOBILE = 120;
+
+/**
+ * =========================================================================
+ * FOOTER BASKET HANDOFF CONSTANTS (Walk -> Hop In -> Settle & Sleep)
+ * =========================================================================
+ */
+const FOOTER_WALK_END = 0.55;
+const FOOTER_HOP_END = 0.80;
+const FOOTER_SETTLE_END = 1.00;
+const FOOTER_ARC_HEIGHT_DESKTOP = 70; // px
+const FOOTER_ARC_HEIGHT_MOBILE = 45; // px
+const FOOTER_PUPPY_TO_BASKET_SCALE = 0.70; // puppy width ~70% of basket width
+const FOOTER_BASKET_WIDTH_DESKTOP = 190; // px (matches Footer.tsx EmptyBasket)
+const FOOTER_BASKET_WIDTH_MOBILE = 140; // px
+const FOOTER_FAST_SEQUENCE_MS = 900; // time-based fallback for fast scroll / End key
 
 // Barks & Speech Bubbles on Click/Tap
 const SPEECH_LINES = ["woof!", "hi friend!", "scroll more!", "adopt me?"];
@@ -150,11 +168,19 @@ export function FollowMascot() {
   const springScale = useSpring(targetScale, { stiffness: 160, damping: 22 });
   const springRotate = useSpring(targetRotate, { stiffness: 220, damping: 22 });
 
-  // Hero Handoff Reactive States
+  // Hero Handoff & Footer Basket Reactive States
   const [isAboveScallops, setIsAboveScallops] = useState(false);
+  const [isInsideBasket, setIsInsideBasket] = useState(false);
+  const [isSleepingInBasket, setIsSleepingInBasket] = useState(false);
+  const [peekOneEye, setPeekOneEye] = useState(false);
   const [showDustPuff, setShowDustPuff] = useState(false);
   const [heroP, setHeroP] = useState(0);
   const heroAnchorRef = useRef<{ x: number; y: number } | null>(null);
+  const prevFooterFRef = useRef<number>(0);
+  const isInitialMountRef = useRef<boolean>(true);
+  const fastFooterAnimRef = useRef<number | null>(null);
+  const isFastFooterPlayingRef = useRef<boolean>(false);
+  const peekEyeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Subscribe to Hero Progress
   useEffect(() => {
@@ -369,7 +395,7 @@ export function FollowMascot() {
         setGlanceAngle(0);
       }
 
-      if (pose === "sleep") {
+      if (pose === "sleep" && !isSleepingInBasket) {
         setPose("sit");
         setIsHop(true);
         setTimeout(() => setIsHop(false), 450);
@@ -378,7 +404,7 @@ export function FollowMascot() {
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [isMobile, springX, springY, pose]);
+  }, [isMobile, springX, springY, pose, isSleepingInBasket]);
 
   // =========================================================================
   // 5. Collision Avoidance with [data-mascot-avoid]
@@ -436,6 +462,7 @@ export function FollowMascot() {
       }
 
       const basket =
+        document.querySelector('[data-mascot-anchor="footer-basket"]') ||
         document.getElementById("footer-mascot-basket") ||
         document.querySelector("[data-mascot-basket='true']");
       if (basket) {
@@ -449,8 +476,21 @@ export function FollowMascot() {
 
     updateAnchors();
     window.addEventListener("scroll", updateAnchors, { passive: true });
-    return () => window.removeEventListener("scroll", updateAnchors);
-  }, []);
+    window.addEventListener("resize", updateAnchors, { passive: true });
+
+    let ro: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(updateAnchors);
+      const footerEl = document.querySelector('footer[data-mascot="footer"]');
+      if (footerEl) ro.observe(footerEl);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", updateAnchors);
+      window.removeEventListener("resize", updateAnchors);
+      if (ro) ro.disconnect();
+    };
+  }, [pathname]);
 
   // Current mascot dimension
   const currentSize = isDetailPage
@@ -481,11 +521,28 @@ export function FollowMascot() {
     }
 
     if (prefersReducedMotion) {
+      const footerEl = document.querySelector('footer[data-mascot="footer"]');
+      const footerRect = footerEl ? footerEl.getBoundingClientRect() : null;
+      const fReduced = footerRect
+        ? Math.max(0, Math.min(1, (H - footerRect.top) / Math.max(1, footerRect.height)))
+        : 0;
+
+      if (fReduced >= FOOTER_HOP_END) {
+        setIsSleepingInBasket(true);
+        setGlobalFooterSleeping(true);
+        claimMascotOwnership("footer");
+        return;
+      } else {
+        setIsSleepingInBasket(false);
+        setGlobalFooterSleeping(false);
+        releaseMascotOwnership("footer");
+      }
+
       targetX.set(isMobile ? 30 : 60);
       targetY.set(windowSize.height - (isMobile ? 90 : 130));
       targetScale.set(isMobile ? 64 / 120 : 115 / 170);
       setIsAboveScallops(true);
-      setPose(activeSection === "faq" ? "sit" : activeSection === "footer" ? "sleep" : "idle");
+      setPose(activeSection === "faq" ? "sit" : "idle");
       return;
     }
 
@@ -613,22 +670,215 @@ export function FollowMascot() {
       targetX.set(W * 0.88);
     }
 
-    // Default Vertical Placement outside floor mode
+    // Default Vertical Placement outside floor mode (stay above mobile sticky bottom bar)
     let targetPosY = isMobile
-      ? H - 80
+      ? H - 104
       : H - H * (BOTTOM_OFFSET_PERCENT / 100) - MASCOT_SIZE_DESKTOP / 2;
-
-    // Section Hop Trigger: Entering or leaving footer basket
-    if (prevSectionRef.current !== "footer" && activeSection === "footer") {
-      setIsHop(true);
-      setTimeout(() => setIsHop(false), 600);
-    } else if (prevSectionRef.current === "footer" && activeSection !== "footer") {
-      setIsHop(true);
-      setTimeout(() => setIsHop(false), 500);
-    }
 
     prevSectionRef.current = activeSection;
     prevScrollYRef.current = scrollY;
+
+    // Section 9: Footer - Walk to EmptyBasket, Hop In (arc + layer switch), Settle & Sleep
+    const footerEl = document.querySelector('footer[data-mascot="footer"]');
+    const footerRect = footerEl ? footerEl.getBoundingClientRect() : null;
+    const footerProgress = footerRect
+      ? Math.max(0, Math.min(1, (H - footerRect.top) / Math.max(1, footerRect.height)))
+      : 0;
+
+    if (footerProgress > 0 && footerBasketAnchorRef.current && (mascotOwner === "follow" || mascotOwner === "footer")) {
+      claimMascotOwnership("footer");
+      const anchor = footerBasketAnchorRef.current;
+      const basketWidth = isMobile ? FOOTER_BASKET_WIDTH_MOBILE : FOOTER_BASKET_WIDTH_DESKTOP;
+      const sleepScale = (basketWidth * FOOTER_PUPPY_TO_BASKET_SCALE) / mascotHeight;
+      const arcHeight = isMobile ? FOOTER_ARC_HEIGHT_MOBILE : FOOTER_ARC_HEIGHT_DESKTOP;
+      const stagingX = Math.max(isMobile ? 48 : 80, anchor.x - (isMobile ? 76 : 115));
+
+      // Page load / refresh directly at bottom: place straight asleep in basket
+      if (isInitialMountRef.current && footerProgress >= FOOTER_HOP_END) {
+        isInitialMountRef.current = false;
+        prevFooterFRef.current = footerProgress;
+        setIsInsideBasket(true);
+        setIsSleepingInBasket(true);
+        setGlobalFooterSleeping(true);
+        setPose("sleep");
+        setFacing("right");
+        targetX.set(anchor.x);
+        targetY.set(anchor.y);
+        springX.set(anchor.x);
+        springY.set(anchor.y);
+        targetScale.set(sleepScale);
+        springScale.set(sleepScale);
+        targetRotate.set(0);
+        return;
+      }
+      isInitialMountRef.current = false;
+
+      // Fast scroll / "End" key: play 0.9s time-based hop-in & settle sequence
+      if (
+        prevFooterFRef.current < FOOTER_WALK_END &&
+        footerProgress >= FOOTER_HOP_END &&
+        !isFastFooterPlayingRef.current
+      ) {
+        isFastFooterPlayingRef.current = true;
+        const startTime = performance.now();
+        const startX = springX.get();
+        const startY = springY.get();
+
+        const stepFastFooter = (now: number) => {
+          const elapsed = now - startTime;
+          const p = Math.min(1, elapsed / FOOTER_FAST_SEQUENCE_MS);
+          const latestAnchor = footerBasketAnchorRef.current || anchor;
+
+          if (p < 0.55) {
+            // Hop arc into basket
+            const tHop = p / 0.55;
+            const arcY = -Math.sin(Math.PI * tHop) * arcHeight;
+            targetX.set(startX + (latestAnchor.x - startX) * tHop);
+            targetY.set(startY + (latestAnchor.y - startY) * tHop + arcY);
+            targetRotate.set(Math.sin(Math.PI * tHop) * -10);
+            targetScale.set(followScale + (sleepScale - followScale) * tHop);
+            setFacing(latestAnchor.x >= startX ? "right" : "left");
+            setPose("walk");
+            setIsInsideBasket(tHop >= 0.5);
+            if (tHop >= 0.88) setShowDustPuff(true);
+          } else if (p < 0.85) {
+            // Nesting circle turn
+            const tNest = (p - 0.55) / 0.30;
+            setShowDustPuff(false);
+            setIsInsideBasket(true);
+            targetX.set(latestAnchor.x);
+            targetY.set(latestAnchor.y);
+            targetScale.set(sleepScale);
+            targetRotate.set(Math.sin(tNest * Math.PI * 2) * 14);
+            setFacing(tNest < 0.5 ? "left" : "right");
+            setPose("idle");
+          } else {
+            // Settled & asleep
+            setIsInsideBasket(true);
+            setIsSleepingInBasket(true);
+            setGlobalFooterSleeping(true);
+            targetX.set(latestAnchor.x);
+            targetY.set(latestAnchor.y);
+            targetScale.set(sleepScale);
+            targetRotate.set(0);
+            setFacing("right");
+            setPose("sleep");
+          }
+
+          if (p < 1) {
+            fastFooterAnimRef.current = requestAnimationFrame(stepFastFooter);
+          } else {
+            isFastFooterPlayingRef.current = false;
+          }
+        };
+
+        if (fastFooterAnimRef.current) cancelAnimationFrame(fastFooterAnimRef.current);
+        fastFooterAnimRef.current = requestAnimationFrame(stepFastFooter);
+        prevFooterFRef.current = footerProgress;
+        return;
+      }
+
+      if (isFastFooterPlayingRef.current) {
+        if (footerProgress < FOOTER_WALK_END && fastFooterAnimRef.current) {
+          cancelAnimationFrame(fastFooterAnimRef.current);
+          isFastFooterPlayingRef.current = false;
+        } else {
+          prevFooterFRef.current = footerProgress;
+          return;
+        }
+      }
+
+      prevFooterFRef.current = footerProgress;
+
+      // Phase 1: f 0.00 -> 0.55, WALK straight toward basket (or back to CTA door when scrolling up)
+      if (footerProgress <= FOOTER_WALK_END) {
+        const tWalk = footerProgress / FOOTER_WALK_END;
+        setIsInsideBasket(false);
+        setIsSleepingInBasket(false);
+        setGlobalFooterSleeping(false);
+        setShowDustPuff(false);
+        targetRotate.set(0);
+        targetScale.set(followScale);
+
+        let startX: number;
+        let startY: number;
+        if (ctaDoorAnchorRef.current) {
+          startX = ctaDoorAnchorRef.current.x;
+          startY = Math.min(H - 90, ctaDoorAnchorRef.current.y);
+        } else {
+          const cycle = scrollY / CYCLE_DISTANCE_PX;
+          const mod = cycle % 2;
+          const pingPong = mod > 1 ? 2 - mod : mod;
+          startX = (isMobile ? W * 0.15 : W * 0.08) + pingPong * ((isMobile ? W * 0.85 : W * 0.88) - (isMobile ? W * 0.15 : W * 0.08));
+          startY = targetPosY;
+        }
+
+        const walkX = startX + (stagingX - startX) * tWalk;
+        const walkY = startY + (targetPosY - startY) * tWalk;
+
+        targetX.set(walkX);
+        targetY.set(walkY);
+        const destX = scrollDirection === "up" ? startX : anchor.x;
+        setFacing(destX >= walkX ? "right" : "left");
+        setPose(isScrolling ? "walk" : tWalk < 0.08 && ctaDoorAnchorRef.current ? "sit" : "idle");
+        return;
+      }
+
+      // Phase 2: f 0.55 -> 0.80, HOP IN parabolic arc + layer switch at peak
+      if (footerProgress <= FOOTER_HOP_END) {
+        const tHop = (footerProgress - FOOTER_WALK_END) / (FOOTER_HOP_END - FOOTER_WALK_END);
+        const arcY = -Math.sin(Math.PI * tHop) * arcHeight;
+
+        setIsSleepingInBasket(false);
+        setGlobalFooterSleeping(false);
+        setIsInsideBasket(tHop >= 0.5);
+        setShowDustPuff(tHop >= 0.85);
+
+        const hopX = stagingX + (anchor.x - stagingX) * tHop;
+        const hopBaseY = targetPosY + (anchor.y - targetPosY) * tHop;
+
+        targetX.set(hopX);
+        targetY.set(hopBaseY + arcY);
+        targetRotate.set(Math.sin(Math.PI * tHop) * -10);
+        targetScale.set(followScale + (sleepScale - followScale) * tHop);
+        setFacing("right");
+        setPose(isScrolling ? "walk" : "idle");
+        return;
+      }
+
+      // Phase 3: f 0.80 -> 1.00, SETTLE (nesting turn) AND SLEEP
+      const tSettle = (footerProgress - FOOTER_HOP_END) / (FOOTER_SETTLE_END - FOOTER_HOP_END);
+      setIsInsideBasket(true);
+      setShowDustPuff(false);
+      targetX.set(anchor.x);
+      targetY.set(anchor.y);
+      targetScale.set(sleepScale);
+
+      if (tSettle < 0.45) {
+        const tNest = tSettle / 0.45;
+        setIsSleepingInBasket(false);
+        setGlobalFooterSleeping(false);
+        targetRotate.set(Math.sin(tNest * Math.PI * 2) * 14);
+        setFacing(tNest < 0.5 ? "left" : "right");
+        setPose("idle");
+      } else {
+        setIsSleepingInBasket(true);
+        setGlobalFooterSleeping(true);
+        targetRotate.set(0);
+        setFacing("right");
+        setPose("sleep");
+      }
+      return;
+    } else {
+      isInitialMountRef.current = false;
+      prevFooterFRef.current = 0;
+      setIsInsideBasket(false);
+      setIsSleepingInBasket(false);
+      setGlobalFooterSleeping(false);
+      if (mascotOwner === "footer") {
+        releaseMascotOwnership("footer");
+      }
+    }
 
     // Section 8: CTA Door Scene - Mascot runs to the front door and sits looking up
     if (activeSection === "cta" && ctaDoorAnchorRef.current) {
@@ -637,15 +887,6 @@ export function FollowMascot() {
       targetY.set(Math.min(H - 90, doorAnchor.y));
       setPose("sit");
       setFacing("right");
-      return;
-    }
-
-    // Section 9: Footer - Mascot hops into the woven basket and sleeps
-    if (activeSection === "footer" && footerBasketAnchorRef.current) {
-      const basketAnchor = footerBasketAnchorRef.current;
-      targetX.set(basketAnchor.x);
-      targetY.set(basketAnchor.y);
-      setPose("sleep");
       return;
     }
 
@@ -750,14 +991,14 @@ export function FollowMascot() {
     };
   }, [springX, springY, currentSize]);
 
-  // Waking up if user resumes scrolling while asleep
+  // Waking up if user resumes scrolling while asleep (outside footer basket)
   useEffect(() => {
-    if (isScrolling && pose === "sleep") {
+    if (isScrolling && pose === "sleep" && !isSleepingInBasket) {
       setPose("walk");
       setIsHop(true);
       setTimeout(() => setIsHop(false), 450);
     }
-  }, [isScrolling, pose]);
+  }, [isScrolling, pose, isSleepingInBasket]);
 
   // =========================================================================
   // 9. Dev-only Check: Guarantee exactly one visible mascot
@@ -797,6 +1038,22 @@ export function FollowMascot() {
     }
     lastClickTimeRef.current = now;
 
+    // Clicking sleeping puppy in footer basket: open one eye, wag tail once, show "5 more minutes..." for 2s
+    if (isSleepingInBasket && pose === "sleep") {
+      triggerExcited();
+      setPeekOneEye(true);
+      setSpeech("5 more minutes...");
+      if (peekEyeTimerRef.current) clearTimeout(peekEyeTimerRef.current);
+      peekEyeTimerRef.current = setTimeout(() => {
+        setPeekOneEye(false);
+      }, 2000);
+      if (speechTimerRef.current) clearTimeout(speechTimerRef.current);
+      speechTimerRef.current = setTimeout(() => {
+        setSpeech(null);
+      }, 2000);
+      return;
+    }
+
     setIsHop(true);
     triggerExcited();
     setTimeout(() => setIsHop(false), 500);
@@ -814,16 +1071,23 @@ export function FollowMascot() {
     }
   };
 
-  // Do not render if mobile menu is open, or at top of homepage hero (where the hero has its own peeking mascot), or if another section owns the mascot
+  // Do not render if mobile menu is open, at top of homepage hero, reduced-motion sleeping in basket, or another section owns the mascot
   const isHeroAtTop = !isDetailPage && pathname === "/" && scrollY < 40;
-  if (isMenuOpen || isHeroAtTop || mascotOwner !== "follow") return null;
+  if (
+    isMenuOpen ||
+    isHeroAtTop ||
+    (prefersReducedMotion && isSleepingInBasket) ||
+    (mascotOwner !== "follow" && mascotOwner !== "footer")
+  ) {
+    return null;
+  }
 
   const baseMascotRenderSize = isMobile ? HERO_MASCOT_BASE_SIZE_MOBILE : HERO_MASCOT_BASE_SIZE_DESKTOP;
 
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden select-none"
-      style={{ zIndex: isAboveScallops ? 35 : 25 }}
+      style={{ zIndex: isInsideBasket ? 20 : isAboveScallops ? 35 : 25 }}
       aria-hidden="true"
     >
       {/* 1. Footprint Trail Canvas */}
@@ -835,13 +1099,19 @@ export function FollowMascot() {
         style={{
           x: springX,
           y: springY,
-          scale: springScale,
-          rotate: springRotate,
           opacity: isAvoiding ? 0.35 : 1,
         }}
         transition={{ opacity: { duration: 0.25 } }}
-        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none"
+        className="absolute top-0 left-0 pointer-events-none"
       >
+        <div className="-translate-x-1/2 -translate-y-1/2">
+          <motion.div
+            style={{
+              scale: springScale,
+              rotate: springRotate,
+            }}
+            className="flex flex-col items-center pointer-events-none"
+          >
         {/* Interactive Speech Bubble (hidden while peeking at top) */}
         {speech && (pathname !== "/" || heroP >= 0.20) && (
           <motion.div
@@ -893,10 +1163,13 @@ export function FollowMascot() {
             isWalking={pose === "walk" && isScrolling}
             isRunning={isFloorMode && pose === "walk" && isScrolling}
             isExcited={isExcited}
+            peekOneEye={peekOneEye}
             size={baseMascotRenderSize}
             className="filter drop-shadow-sm transition-transform group-hover:scale-105"
           />
         </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );

@@ -11,6 +11,7 @@ export interface MascotProps {
   isWalking?: boolean;
   isRunning?: boolean;
   isExcited?: boolean;
+  peekOneEye?: boolean;
   facing?: "left" | "right";
   size?: number;
   width?: number | string;
@@ -45,6 +46,7 @@ export function Mascot({
   isWalking = false,
   isRunning = false,
   isExcited = false,
+  peekOneEye = false,
   facing = "right",
   size,
   width,
@@ -366,55 +368,26 @@ export function Mascot({
   }
 
   // ==========================================
-  // 3. SLEEP POSE: Curled in woven basket with zzz bubbles
+  // 3. SLEEP POSE: Curled puppy only (no basket; Footer provides EmptyBasket)
   // ==========================================
   if (activePose === "sleep") {
+    const sleepWidth = baseDim;
+    const sleepHeight = Math.round(baseDim * 0.68);
     return (
       <div
         className={cn("relative inline-block select-none mascot-sleeping", className)}
         style={{
-          width: compWidth,
-          height: compHeight,
+          width: sleepWidth,
+          height: sleepHeight,
         }}
         aria-hidden="true"
       >
-        {/* Floating ZZZ bubbles */}
-        <div className="absolute -top-6 right-6 font-handwriting font-black text-xl text-[#F0B955] zzz-1 select-none pointer-events-none">
-          z
-        </div>
-        <div className="absolute -top-10 right-2 font-handwriting font-black text-2xl text-[#C98B4D] zzz-2 select-none pointer-events-none">
-          Z
-        </div>
-        <div className="absolute -top-16 -right-2 font-handwriting font-black text-3xl text-[#FFF3D9] zzz-3 select-none pointer-events-none">
-          Z
-        </div>
-
         <svg
-          viewBox="0 0 180 150"
+          viewBox="36 52 108 66"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full overflow-visible"
         >
-          {/* Ground shadow */}
-          <ellipse cx="90" cy="142" rx="65" ry="8" fill="#1A0E08" opacity="0.4" />
-
-          {/* Woven Basket Outer Base */}
-          <path
-            d="M30 95 C26 122, 36 138, 90 138 C144 138, 154 122, 150 95 Z"
-            fill="#8B5226"
-            stroke="#2A1A12"
-            strokeWidth="3"
-            strokeLinejoin="round"
-          />
-          {/* Basket weave criss-cross texture */}
-          <g stroke="#5A3516" strokeWidth="1.8" opacity="0.65">
-            <path d="M45 98 L60 136 M75 96 L90 137 M105 96 L120 136 M135 98 L144 125" />
-            <path d="M135 98 L120 136 M105 96 L90 137 M75 96 L60 136 M45 98 L36 125" />
-          </g>
-
-          {/* Soft Cream Cushion Pillow inside */}
-          <ellipse cx="90" cy="98" rx="55" ry="18" fill="#FFF1D0" stroke="#2A1A12" strokeWidth="2.5" />
-
           {/* Curled Sleeping Puppy (breathing animation) */}
           <g className="breathe">
             {/* Curled Scalloped Torso */}
@@ -425,8 +398,13 @@ export function Mascot({
               strokeWidth="2.8"
             />
 
-            {/* Pom-Pom Tail */}
-            <circle cx="132" cy="85" r="10" fill="#E9B965" stroke="#2A1A12" strokeWidth="2.5" />
+            {/* Pom-Pom Tail (stops wagging in sleep; single wag when nudged) */}
+            <g
+              className={cn("mascot-tail", isExcited && "mascot-tail-excited")}
+              style={{ transformOrigin: "126px 86px" }}
+            >
+              <circle cx="132" cy="85" r="10" fill="#E9B965" stroke="#2A1A12" strokeWidth="2.5" />
+            </g>
 
             {/* Fluffy Sleeping Head with Top-Knot */}
             <circle cx="68" cy="84" r="23" fill="#E9B965" stroke="#2A1A12" strokeWidth="2.8" />
@@ -443,13 +421,21 @@ export function Mascot({
             {/* Cream Muzzle */}
             <ellipse cx="74" cy="89" rx="12" ry="8" fill="#F6DDA6" stroke="#2A1A12" strokeWidth="2" />
 
-            {/* Closed Curved Arc Sleeping Eyes ◠ */}
-            <path
-              d="M58 84 C60 88, 65 88, 67 84"
-              stroke="#2A1A12"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-            />
+            {/* Sleeping Eye (closed arc ◠, or one eye peeking open when tapped) */}
+            {peekOneEye ? (
+              <g>
+                <circle cx="62" cy="83" r="3.8" fill="#2A1A12" />
+                <circle cx="61" cy="81.8" r="1.4" fill="#FFFFFF" />
+              </g>
+            ) : (
+              <path
+                d="M58 84 C60 88, 65 88, 67 84"
+                stroke="#2A1A12"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+              />
+            )}
+
             {/* Blush */}
             <circle cx="58" cy="91" r="5" fill="#F2A7A0" opacity="0.9" />
 
@@ -459,14 +445,6 @@ export function Mascot({
             {/* Two Front Paws tucked under chin */}
             <ellipse cx="74" cy="98" rx="8" ry="5.5" fill="#E9B965" stroke="#2A1A12" strokeWidth="2" />
           </g>
-
-          {/* Front Basket Rim */}
-          <path
-            d="M26 95 C26 95, 56 102, 90 102 C124 102, 154 95, 154 95"
-            stroke="#2A1A12"
-            strokeWidth="3.5"
-            strokeLinecap="round"
-          />
         </svg>
       </div>
     );

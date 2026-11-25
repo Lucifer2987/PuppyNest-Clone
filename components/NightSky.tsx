@@ -7,6 +7,7 @@ interface NightSkyProps {
   className?: string;
   showMoon?: boolean;
   starCount?: number;
+  moonGlow?: boolean;
 }
 
 /**
@@ -17,6 +18,7 @@ export function NightSky({
   className,
   showMoon = true,
   starCount = 38,
+  moonGlow = false,
 }: NightSkyProps) {
   // Generate deterministic pseudo-random star coordinates
   const stars = useMemo(() => {
@@ -37,7 +39,14 @@ export function NightSky({
     >
       {/* Crescent Moon */}
       {showMoon && (
-        <div className="absolute top-8 sm:top-12 right-8 sm:right-16 w-14 h-14 sm:w-16 sm:h-16 text-[#F0B955] drop-shadow-[0_0_12px_rgba(240,185,85,0.45)]">
+        <div
+          className={cn(
+            "absolute top-8 sm:top-12 right-8 sm:right-16 w-14 h-14 sm:w-16 sm:h-16 text-[#F0B955] transition-all duration-700",
+            moonGlow
+              ? "drop-shadow-[0_0_22px_rgba(240,185,85,0.85)] scale-105"
+              : "drop-shadow-[0_0_12px_rgba(240,185,85,0.45)]"
+          )}
+        >
           <svg viewBox="0 0 100 100" fill="none" className="w-full h-full">
             <path
               d="M78 18C52 24 38 48 42 76C44 85 48 92 54 96C30 92 12 70 14 46C16 22 36 6 62 4C68 4 73 5 78 8C73 11 75 14 78 18Z"

@@ -22,8 +22,34 @@ export function getGlobalHeroProgress(): MotionValue<number> {
 }
 
 let isFloorModeState = false;
+let isFooterSleepingState = false;
 const floorModeListeners = new Set<(isFloor: boolean) => void>();
+const footerSleepingListeners = new Set<(sleeping: boolean) => void>();
 const excitedListeners = new Set<() => void>();
+const globalFooterSleeping = motionValue<number>(0);
+
+export function setGlobalFooterSleeping(sleeping: boolean) {
+  globalFooterSleeping.set(sleeping ? 1 : 0);
+  if (isFooterSleepingState !== sleeping) {
+    isFooterSleepingState = sleeping;
+    footerSleepingListeners.forEach((fn) => fn(sleeping));
+  }
+}
+
+export function getGlobalFooterSleeping(): boolean {
+  return isFooterSleepingState;
+}
+
+export function getGlobalFooterSleepingMV(): MotionValue<number> {
+  return globalFooterSleeping;
+}
+
+export function subscribeFooterSleeping(callback: (sleeping: boolean) => void) {
+  footerSleepingListeners.add(callback);
+  return () => {
+    footerSleepingListeners.delete(callback);
+  };
+}
 
 /**
  * Mascot Ownership Store: Ensures strictly ONE active mascot on screen.
@@ -33,6 +59,7 @@ const excitedListeners = new Set<() => void>();
  */
 export type MascotOwner =
   | "follow"
+  | "footer"
   | "how-it-works-toggle"
   | "cta"
   | "faq-mascot"
